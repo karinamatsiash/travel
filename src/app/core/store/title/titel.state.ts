@@ -6,7 +6,7 @@ import { SetTitleName } from '@core/store/title/title.action';
 @State<ITitleState>({
 	name: 'title',
 	defaults: {
-		name: 'travel',
+		name: 'TRAVEL',
 	},
 })
 @Injectable({
