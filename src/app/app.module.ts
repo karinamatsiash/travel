@@ -14,6 +14,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppBootstrapService } from '@core/services';
 import { Observable } from 'rxjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
 	return new TranslateHttpLoader(http, './assets/locale/', '.json');
@@ -46,6 +47,7 @@ export function initializeApp(appBootstrappingService: AppBootstrapService): () 
 			},
 			useDefaultLang: false,
 		}),
+		BrowserAnimationsModule,
 	],
 	providers: [{ provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppBootstrapService], multi: true }],
 	bootstrap: [AppComponent],

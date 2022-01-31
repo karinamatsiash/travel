@@ -17,10 +17,12 @@
     },
     "dependencies": {
         "@angular/animations": "~12.1.0",
+        "@angular/cdk": "^13.2.0",
         "@angular/common": "~12.1.0",
         "@angular/compiler": "~12.1.0",
         "@angular/core": "~12.1.0",
         "@angular/forms": "~12.1.0",
+        "@angular/material": "^13.2.0",
         "@angular/platform-browser": "~12.1.0",
         "@angular/platform-browser-dynamic": "~12.1.0",
         "@angular/router": "~12.1.0",
