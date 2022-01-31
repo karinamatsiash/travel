@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SharedModule } from '@shared/shared.module';
@@ -11,9 +11,16 @@ import { TitleState } from '@core/store/title';
 import { RouterModule } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AppRoutingModule } from './app-routing.module';
+import { AppBootstrapService } from '@core/services';
+import { Observable } from 'rxjs';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
 	return new TranslateHttpLoader(http, './assets/locale/', '.json');
+}
+
+export function initializeApp(appBootstrappingService: AppBootstrapService): () => Observable<any> {
+	return () => appBootstrappingService.init();
 }
 
 @NgModule({
@@ -22,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
 		BrowserModule,
 		HttpClientModule,
 		SharedModule,
+		AppRoutingModule,
 		RouterModule.forRoot([]),
 		NgxsModule.forRoot([TitleState], {
 			developmentMode: !environment.production,
@@ -39,7 +47,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
 			useDefaultLang: false,
 		}),
 	],
-	providers: [],
+	providers: [{ provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppBootstrapService], multi: true }],
 	bootstrap: [AppComponent],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

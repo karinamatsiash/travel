@@ -1,3 +1,3 @@
-export * from './titel.state';
+export * from './title.state';
 export * from './title.action';
 export * from './title.model';
