@@ -30,6 +30,7 @@
                             "src/assets"
                         ],
                         "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/styles/main.less",
                             {
                                 "input": "src/themes/dark.less",
@@ -98,6 +99,7 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
+                        "codeCoverage": true,
                         "main": "src/test.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.spec.json",
@@ -107,6 +109,7 @@
                             "src/assets"
                         ],
                         "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "src/styles/main.less"
                         ],
                         "scripts": []
